@@ -18,6 +18,7 @@ const Slider = () => {
   };
   useEffect(() => {
     nextCard();
+
   });
   return (
     <div className="SlideCardList">
@@ -44,11 +45,12 @@ const Slider = () => {
                 <input
                   key={`${event.id}`}
                   type="radio"
-                  name="radio-button"
+                  name="radio-button"            
                   checked={idx === radioIdx}
                 />
-              ))}
+              ))} 
             </div>
+            
           </div>
         </>
       ))}
