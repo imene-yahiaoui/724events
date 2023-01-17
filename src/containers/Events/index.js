@@ -28,18 +28,14 @@ const EventList = () => {
     return false;
   });
 
-
   const onChange = (evtType) => {
     setCurrentPage(1);
     setType(evtType);
   };
-  console.log("filteredEvents", filteredEvents);
+
   const pageNumber = Math.floor((filteredEvents?.length || 0) / PER_PAGE) + 1;
   const typeList = new Set(data?.events.map((event) => event.type));
 
-  console.log("pageNumber", pageNumber);
-  // console.log("fil",fil)
-  console.log("llen", filteredEvents.length);
   return (
     <>
       {error && <div>An error occured</div>}
