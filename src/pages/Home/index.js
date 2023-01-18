@@ -13,6 +13,7 @@ import Modal from "../../containers/Modal";
 import { useData } from "../../contexts/DataContext";
 
 const Page = () => {
+
   const { data } = useData();
 
   const lastPerformance = data?.events.sort(
@@ -111,7 +112,7 @@ const Page = () => {
             }
           >
             {({ setIsOpened }) => (
-              <Form onSuccess={() => setIsOpened(true)} onError={() => null} />
+              <Form onSuccess={() => setIsOpened(true)} onError={() => null}  click={() => setIsOpened(true)}/>
             )}
           </Modal>
         </div>
