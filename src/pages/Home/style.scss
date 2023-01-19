@@ -139,17 +139,29 @@ footer {
     padding: 32px;
 
     &.contact {
-      padding-left: 64px;
-      div {
-        padding-top: 16px;
+      h3{
+        padding-bottom: 50px;
       }
-      address {
-        padding-top: 8px;
+      a{
+        text-decoration: none;
+        color: black;
+        padding-bottom: 20px;
+        
       }
+      .mail{
+        padding-bottom: 87px;
+      }
+      // padding-left: 64px;
+      // div {
+      //   padding-top: 16px;
+      // }
+      // address {
+      //   padding-top: 8px;
+      // }
 
-      svg {
-        margin-right: 8px;
-      }
+      // svg {
+      //   margin-right: 8px;
+      // }
     }
   }
 

@@ -112,7 +112,7 @@ const Page = () => {
             }
           >
             {({ setIsOpened }) => (
-              <Form onSuccess={() => setIsOpened(true)} onError={() => null}  click={() => setIsOpened(true)}/>
+              <Form onSuccess={() => setIsOpened(true)} onError={() => null} />
             )}
           </Modal>
         </div>
@@ -130,9 +130,13 @@ const Page = () => {
         </div>
         <div className="col contact">
           <h3>Contactez-nous</h3>
-          <address>45 avenue de la République, 75000 Paris</address>
-          <div>01 23 45 67 89</div>
-          <div>contact@77events.com</div>
+          
+          <a href="https://goo.gl/maps/FyCWp5uRpWPMeGwq9">45 avenue de la République, 75000 Paris</a>
+
+         <a href="tel:0123456789">01 23 45 67 89</a>
+         
+          <a className="mail" href="mailto:contact@77events.com"  >contact@77events.com</a>
+       
           <div>
             <a href="#twitch">
               <Icon name="twitch" />
