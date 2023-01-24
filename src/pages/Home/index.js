@@ -8,6 +8,7 @@ import EventList from "../../containers/Events";
 import Slider from "../../containers/Slider";
 import Logo from "../../components/Logo";
 import Icon from "../../components/Icon";
+// eslint-disable-next-line import/no-named-as-default, import/no-named-as-default-member
 import Form from "../../containers/Form";
 import Modal from "../../containers/Modal";
 import { useData } from "../../contexts/DataContext";
@@ -111,8 +112,10 @@ const Page = () => {
               </div>
             }
           >
-            {({ setIsOpened }) => (
+            {({ setIsOpened}) => (
+               
               <Form onSuccess={() => setIsOpened(true)} onError={() => null} />
+               
             )}
           </Modal>
         </div>

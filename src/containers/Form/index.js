@@ -13,10 +13,12 @@ const mockContactApi = () =>
 const Form = ({ onSuccess, onError }) => {
   const [sending, setSending] = useState(false);
 
-
   const sendContact = useCallback(
     async (evt) => {
       evt.preventDefault();
+      const data = new FormData(evt.target);
+      console.log(Object.fromEntries(data.entries()));
+
       setSending(true);
       // We try to call mockContactApi
       try {
@@ -34,8 +36,9 @@ const Form = ({ onSuccess, onError }) => {
     <form onSubmit={sendContact}>
       <div className="row">
         <div className="col">
-          <Field placeholder="" label="Nom" />
-          <Field placeholder="" label="Prénom" />
+          <Field placeholder="" label="Nom" name="Nom" />
+
+          <Field placeholder="" label="Prénom" name="Prénom" />
           <Select
             selection={["Personel", "Entreprise"]}
             onChange={() => null}
@@ -44,7 +47,7 @@ const Form = ({ onSuccess, onError }) => {
             titleEmpty
           />
 
-          <Field placeholder="" label="Email" />
+          <Field placeholder="" label="Email" name="Email" />
           <Button
             type={BUTTON_TYPES.SUBMIT}
             disabled={sending}
@@ -58,6 +61,7 @@ const Form = ({ onSuccess, onError }) => {
             placeholder="message"
             label="Message"
             type={FIELD_TYPES.TEXTAREA}
+            name="msg"
           />
         </div>
       </div>
