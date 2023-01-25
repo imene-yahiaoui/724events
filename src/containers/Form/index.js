@@ -17,7 +17,7 @@ const Form = ({ onSuccess, onError }) => {
     async (evt) => {
       evt.preventDefault();
       const data = new FormData(evt.target);
-      console.log(Object.fromEntries(data.entries()));
+      console.log(Object.fromEntries(data));
 
       setSending(true);
       // We try to call mockContactApi
@@ -47,7 +47,12 @@ const Form = ({ onSuccess, onError }) => {
             titleEmpty
           />
 
-          <Field placeholder="" label="Email" name="Email" />
+          <Field
+            placeholder=""
+            label="Email"
+            name="Email"
+            type={FIELD_TYPES.InputEmail}
+          />
           <Button
             type={BUTTON_TYPES.SUBMIT}
             disabled={sending}
@@ -77,6 +82,7 @@ Form.propTypes = {
 
 Form.defaultProps = {
   onError: () => null,
+  onSuccess: () => !null,
 };
 
 export default Form;

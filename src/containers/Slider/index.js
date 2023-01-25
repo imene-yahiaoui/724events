@@ -15,36 +15,41 @@ const Slider = () => {
   );
 
   const nextCard = () => {
-    if (Play === true) {
-      setTimeout(
+    setTimeout(
+      () =>
         // eslint-disable-next-line no-unsafe-optional-chaining
-        () => setIndex(index < byDateDesc?.length - 1 ? index + 1 : 0),
-        5000
-      );
-    }
+        index < byDateDesc?.length - 1 ? setIndex(index + 1) : setIndex(0),
+      5000
+    );
+    console.log(Play);
+ 
   };
+  if (Play) {
+  
+    setTimeout(nextCard());
+  }
 
-  // useEffect(() => {
-  nextCard();
-  // });
 
   return (
     <div className="SlideCardList">
       {Play ? (
-        <FaPauseCircle className="icon" onClick={() => setPlay(!Play)} />
+        <FaPauseCircle className="icon" onClick={() => setPlay(false)} />
       ) : (
-        <FaPlayCircle className="icon" onClick={() => setPlay(!Play)} />
+        <FaPlayCircle className="icon" onClick={() => setPlay(true)} />
       )}
-      <div className={Play ? "play-animation" : "pause-animation"}>
-        {byDateDesc?.map((event, idx) => (
+      <div>
+        {byDateDesc?.map((event) => (
           <div
             key={event.id}
             className={
               Play
-                ? `SlideCard SlideCard--${index === idx ? "display" : "hide"}
+                ? `  play-animation   SlideCard SlideCard--${
+                    index === event.id ? "display" : "hide"
+                  }
                     `
-                : `SlideCard  
-                          `
+                : ` pause-animation   SlideCard SlideCard--${
+                    index === event.id ? "display" : "hide"
+                  }`
             }
           >
             <img src={event.cover} alt="forum" key={event.id} />
@@ -59,6 +64,7 @@ const Slider = () => {
         ))}
         <div className="SlideCard__paginationContainer">
           <div className="SlideCard__pagination" />
+
           {byDateDesc?.map((_, radioIdx) => (
             <input
               key={`${_.date}`}
