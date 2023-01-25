@@ -1,11 +1,10 @@
 import { FaPlayCircle, FaPauseCircle } from "react-icons/fa";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useData } from "../../contexts/DataContext";
 import { getMonth } from "../../helpers/Date";
 
 import "./style.scss";
 
-// eslint-disable-next-line consistent-return
 const Slider = () => {
   const { data } = useData();
   const [index, setIndex] = useState(0);
@@ -14,22 +13,26 @@ const Slider = () => {
     new Date(evtA.date) < new Date(evtB.date) ? -1 : 1
   );
 
-  const nextCard = () => {
-    setTimeout(
-      () =>
-        // eslint-disable-next-line no-unsafe-optional-chaining
-        index < byDateDesc?.length - 1 ? setIndex(index + 1) : setIndex(0),
-      5000
-    );
-    console.log(Play);
- 
-  };
-  if (Play) {
-  
-    setTimeout(nextCard());
-  }
+  useEffect(() => {
+    let timeout;
+    const nextCard = () => {
+      console.log(Play);
+      return setTimeout(
+        () =>
+          // eslint-disable-next-line no-unsafe-optional-chaining
+          index < byDateDesc?.length - 1 ? setIndex(index + 1) : setIndex(0),
+        5000
+      );
+    };
 
+    if (Play) {
+      timeout = nextCard();
+    }
 
+    return () => {
+      clearTimeout(timeout);
+    };
+  }, [Play, byDateDesc, index]);
   return (
     <div className="SlideCardList">
       {Play ? (
